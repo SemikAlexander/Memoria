@@ -22,6 +22,7 @@ class MainActivity : AppCompatActivity() {
         binding.apply {
             startGame.setOnClickListener {
                 startActivity<GameActivity>()
+                finish()
             }
 
             adView.loadAd(AdRequest.Builder().build())

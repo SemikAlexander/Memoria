@@ -15,5 +15,62 @@
         android:layout_height="wrap_content"
         android:layout_centerVertical="true"
         android:gravity="center"/>
+
+    <RelativeLayout
+        android:id="@+id/game_result"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="gone">
+
+        <ImageView
+            android:id="@+id/winner_image"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/winner"
+            android:scaleType="centerCrop"
+            android:layout_centerInParent="true"
+            android:visibility="visible"/>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_below="@+id/winner_image"
+            android:layout_marginTop="25dp"
+            android:layout_centerHorizontal="true">
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/replay_button"
+                android:layout_width="75dp"
+                android:layout_height="75dp"
+                android:insetLeft="0dp"
+                android:insetTop="0dp"
+                android:insetRight="0dp"
+                android:insetBottom="0dp"
+                app:cornerRadius="50dp"
+                app:iconGravity="textStart"
+                app:iconPadding="0dp"
+                app:iconSize="35dp"
+                android:backgroundTint="#5E54AC"
+                android:layout_marginRight="15dp"
+                app:icon="@drawable/ic_baseline_replay_24"/>
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/menu_button"
+                android:layout_width="75dp"
+                android:layout_height="75dp"
+                android:insetLeft="0dp"
+                android:insetTop="0dp"
+                android:insetRight="0dp"
+                android:insetBottom="0dp"
+                app:cornerRadius="50dp"
+                app:iconGravity="textStart"
+                app:iconPadding="0dp"
+                app:iconSize="35dp"
+                android:backgroundTint="#453D81"
+                android:layout_marginLeft="15dp"
+                app:icon="@drawable/ic_baseline_menu_24"/>
+        </LinearLayout>
+    </RelativeLayout>
     
 </RelativeLayout>

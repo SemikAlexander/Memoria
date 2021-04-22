@@ -1,8 +1,8 @@
 package com.example.memoria
 
 import android.os.Bundle
+import android.view.View
 import android.widget.AdapterView.OnItemClickListener
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.memoria.adapters.GridAdapter
 import com.example.memoria.databinding.ActivityGameBinding
@@ -22,16 +22,28 @@ class GameActivity : AppCompatActivity() {
         super.onStart()
 
         binding.apply {
-            gameField.numColumns = 6
+            gameField.numColumns = 2
             gameField.isEnabled = true
+            val gameFieldAdapter = GridAdapter(this@GameActivity, 2, 2, "football")
 
-            val gameFieldAdapter = GridAdapter(this@GameActivity, 6, 6, "football")
+            menuButton.setOnClickListener {
+                startActivity<MainActivity>()
+            }
+
+            replayButton.setOnClickListener {
+                gameResult.visibility = View.GONE
+                recreate()
+            }
+
             gameField.adapter = gameFieldAdapter
 
             gameField.onItemClickListener = OnItemClickListener { _, _, position, _ ->
                 gameFieldAdapter.checkOpenCells()
                 gameFieldAdapter.openCell(position)
-                if (gameFieldAdapter.checkGameOver()) Toast.makeText(applicationContext, "Игра закончена", Toast.LENGTH_SHORT).show()
+                if (gameFieldAdapter.isGameOver()) {
+                    gameField.visibility = View.GONE
+                    gameResult.visibility = View.VISIBLE
+                }
             }
         }
     }

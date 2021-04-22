@@ -6,7 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.BaseAdapter
 import android.widget.ImageView
-
+import com.example.memoria.adapters.GridAdapter.Status.*
 
 internal class GridAdapter(
         private val context: Context,
@@ -25,7 +25,7 @@ internal class GridAdapter(
 
     private val cardsStatus : ArrayList<Status> = ArrayList()
 
-    private fun makePictureArray() {
+    private fun createGameField() {
         pictureArray.clear()
 
         for (i in 0 until gameCols * gameRows / 2) {
@@ -39,7 +39,7 @@ internal class GridAdapter(
     private fun closeCells() {
         cardsStatus.clear()
         for (i in 0 until gameCols * gameRows)
-            cardsStatus.add(Status.CLOSE)
+            cardsStatus.add(CLOSE)
     }
 
     override fun getCount(): Int = gameCols * gameRows
@@ -52,7 +52,7 @@ internal class GridAdapter(
                 else convertView as ImageView
 
         when (cardsStatus[position]){
-            Status.OPEN -> {
+            OPEN -> {
                 val drawableId: Int = gameResources.getIdentifier(
                         pictureArray[position],
                         "drawable",
@@ -60,47 +60,47 @@ internal class GridAdapter(
                 )
                 view.setImageResource(drawableId)
             }
-            Status.CLOSE -> view.setImageResource(
+            CLOSE -> view.setImageResource(
                     context.resources.getIdentifier(
                             "close",
                             "drawable",
                             context.packageName
                     )
             )
-            Status.DELETE -> view.visibility = View.GONE
+            DELETE -> view.visibility = View.GONE
         }
-
         return view
     }
 
     init {
-        makePictureArray()
+        createGameField()
         closeCells()
     }
 
-    /*Game functions*/
+    /*Game logic*/
     fun checkOpenCells() {
-        val first: Int = cardsStatus.indexOf(Status.OPEN)
-        val second: Int = cardsStatus.lastIndexOf(Status.OPEN)
-        if (first == second) return
-        if (pictureArray[first] == pictureArray[second]) {
-            cardsStatus[first] = Status.DELETE
-            cardsStatus[second] = Status.DELETE
+        val firstImage: Int = cardsStatus.indexOf(OPEN)
+        val secondImage: Int = cardsStatus.lastIndexOf(OPEN)
+        if (firstImage == secondImage) return
+        if (pictureArray[firstImage] == pictureArray[secondImage]) {
+            cardsStatus[firstImage] = DELETE
+            cardsStatus[secondImage] = DELETE
         } else {
-            cardsStatus[first] = Status.CLOSE
-            cardsStatus[second] = Status.CLOSE
+            cardsStatus[firstImage] = CLOSE
+            cardsStatus[secondImage] = CLOSE
+            closeCells()
         }
         return
     }
 
     fun openCell(position: Int) {
-        if (cardsStatus[position] !== Status.DELETE)
-            cardsStatus[position] = Status.OPEN
+        if (cardsStatus[position] !== DELETE)
+            cardsStatus[position] = OPEN
         notifyDataSetChanged()
         return
     }
 
-    fun checkGameOver(): Boolean {
-        return cardsStatus.indexOf(Status.CLOSE) < 0
+    fun isGameOver(): Boolean {
+        return cardsStatus.indexOf(CLOSE) < 0
     }
 }
