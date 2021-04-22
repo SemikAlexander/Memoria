@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity"
+    android:background="@color/black">
+
+    <com.example.memoria.view.CustomTextView
+        android:id="@+id/customTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/app_name"
+        android:layout_marginTop="20dp"
+        android:layout_centerHorizontal="true"/>
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/start_game"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:text="@string/start_game"
+        android:textColor="@color/white"
+        android:fontFamily="@font/f20610"
+        android:layout_centerInParent="true"
+        android:layout_centerHorizontal="true"
+        android:background="@drawable/rounding_button"/>
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/difficulty_selection"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:text="@string/difficulty_selection"
+        android:textColor="@color/white"
+        android:fontFamily="@font/f20610"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="180dp"
+        android:background="@drawable/rounding_button"
+        />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/topic_choosing"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:text="@string/topic_choosing"
+        android:textColor="@color/white"
+        android:fontFamily="@font/f20610"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="120dp"
+        android:background="@drawable/rounding_button"/>
+
+</RelativeLayout>

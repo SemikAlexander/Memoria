@@ -1,0 +1,18 @@
+<resources>
+    <string name="app_name">Memoria</string>
+    <string name="start_game">Start!</string>
+    <string name="difficulty_selection">Easy</string>
+    <string name="topic_choosing">Animals</string>
+
+    <string-array name="difficulty">
+        <item>Easy</item>
+        <item>Normal</item>
+        <item>Hard</item>
+    </string-array>
+
+    <string-array name="topic">
+        <item>Animals</item>
+        <item>Sports</item>
+        <item>Cars</item>
+    </string-array>
+</resources>
