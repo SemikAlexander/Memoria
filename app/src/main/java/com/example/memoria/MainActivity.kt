@@ -1,6 +1,5 @@
 package com.example.memoria
 
-import android.content.Context
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.example.memoria.databinding.ActivityMainBinding
@@ -20,15 +19,12 @@ class MainActivity : AppCompatActivity() {
     override fun onStart() {
         super.onStart()
 
-        MobileAds.initialize(this) {}
-
         binding.apply {
             startGame.setOnClickListener {
                 startActivity<GameActivity>()
             }
 
-            val adRequest = AdRequest.Builder().build()
-            adView.loadAd(adRequest)
+            adView.loadAd(AdRequest.Builder().build())
         }
     }
 }

@@ -3,6 +3,7 @@
     <string name="start_game">Start!</string>
     <string name="difficulty_selection">Easy</string>
     <string name="topic_choosing">Animals</string>
+    <string name="banner_ad_unit_id">ca-app-pub-3940256099942544/6300978111</string>
 
     <string-array name="difficulty">
         <item>Easy</item>
