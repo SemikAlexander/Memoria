@@ -1,9 +1,11 @@
 package com.example.memoria
 
 import android.content.Context
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
 import com.example.memoria.databinding.ActivityMainBinding
+import com.google.android.gms.ads.AdRequest
+import com.google.android.gms.ads.MobileAds
 
 class MainActivity : AppCompatActivity() {
     lateinit var binding: ActivityMainBinding
@@ -18,13 +20,15 @@ class MainActivity : AppCompatActivity() {
     override fun onStart() {
         super.onStart()
 
-        val pref = getSharedPreferences("setting", Context.MODE_PRIVATE)
-        val editor = pref.edit()
+        MobileAds.initialize(this) {}
 
         binding.apply {
             startGame.setOnClickListener {
                 startActivity<GameActivity>()
             }
+
+            val adRequest = AdRequest.Builder().build()
+            adView.loadAd(adRequest)
         }
     }
 }

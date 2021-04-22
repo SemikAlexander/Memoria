@@ -9,15 +9,15 @@ import android.widget.ImageView
 
 
 internal class GridAdapter(
-        private val mContext: Context,
-        private val mCols: Int,
-        private val mRows: Int,
+        private val context: Context,
+        private val gameCols: Int,
+        private val gameRows: Int,
         topic: String
 ) : BaseAdapter() {
 
     private val pictureArray : ArrayList<String> = ArrayList()
     private val pictureCollection : String = topic
-    private val gameResources : Resources = mContext.resources
+    private val gameResources : Resources = context.resources
 
     private enum class Status {
         OPEN, CLOSE, DELETE
@@ -28,26 +28,27 @@ internal class GridAdapter(
     private fun makePictureArray() {
         pictureArray.clear()
 
-        for (i in 0 until mCols * mRows / 2) {
+        for (i in 0 until gameCols * gameRows / 2) {
             pictureArray.add(pictureCollection + i.toString())
             pictureArray.add(pictureCollection + i.toString())
         }
 
         pictureArray.shuffle()
     }
-    private fun closeAllCells() {
+
+    private fun closeCells() {
         cardsStatus.clear()
-        for (i in 0 until mCols * mRows)
+        for (i in 0 until gameCols * gameRows)
             cardsStatus.add(Status.CLOSE)
     }
 
-    override fun getCount(): Int = mCols * mRows
+    override fun getCount(): Int = gameCols * gameRows
     override fun getItem(position: Int): Any? = null
     override fun getItemId(position: Int): Long = 0
 
     override fun getView(position: Int, convertView: View?, parent: ViewGroup?): View? {
         val view: ImageView =
-                if (convertView == null) ImageView(mContext)
+                if (convertView == null) ImageView(context)
                 else convertView as ImageView
 
         when (cardsStatus[position]){
@@ -55,24 +56,18 @@ internal class GridAdapter(
                 val drawableId: Int = gameResources.getIdentifier(
                         pictureArray[position],
                         "drawable",
-                        mContext.packageName
+                        context.packageName
                 )
                 view.setImageResource(drawableId)
             }
             Status.CLOSE -> view.setImageResource(
-                    mContext.resources.getIdentifier(
+                    context.resources.getIdentifier(
                             "close",
                             "drawable",
-                            mContext.packageName
+                            context.packageName
                     )
             )
-            Status.DELETE -> view.setImageResource(
-                    mContext.resources.getIdentifier(
-                            "none",
-                            "drawable",
-                            mContext.packageName
-                    )
-            )
+            Status.DELETE -> view.visibility = View.GONE
         }
 
         return view
@@ -80,7 +75,7 @@ internal class GridAdapter(
 
     init {
         makePictureArray()
-        closeAllCells()
+        closeCells()
     }
 
     /*Game functions*/
