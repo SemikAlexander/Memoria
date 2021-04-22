@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".MainActivity"
     android:background="@color/black">
 
@@ -17,39 +17,140 @@
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/start_game"
-        android:layout_width="200dp"
-        android:layout_height="200dp"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
         android:text="@string/start_game"
+        android:textSize="@dimen/large_text_size"
         android:textColor="@color/white"
         android:fontFamily="@font/f20610"
-        android:layout_centerInParent="true"
+        android:layout_below="@+id/customTextView"
+        android:layout_marginTop="130dp"
         android:layout_centerHorizontal="true"
         android:background="@drawable/rounding_button"/>
 
-    <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/difficulty_selection"
-        android:layout_width="200dp"
+    <LinearLayout
+        android:id="@+id/difficulty"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/difficulty_selection"
-        android:textColor="@color/white"
-        android:fontFamily="@font/f20610"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="180dp"
-        android:background="@drawable/rounding_button"
-        />
+        android:orientation="horizontal"
+        android:layout_below="@+id/start_game"
+        android:layout_marginTop="@dimen/margin_top"
+        android:layout_centerHorizontal="true">
 
-    <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/topic_choosing"
-        android:layout_width="200dp"
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/easy_button"
+            android:layout_width="75dp"
+            android:layout_height="75dp"
+            android:insetLeft="0dp"
+            android:insetTop="0dp"
+            android:insetRight="0dp"
+            android:insetBottom="0dp"
+            app:cornerRadius="50dp"
+            app:iconGravity="textStart"
+            app:iconPadding="0dp"
+            app:iconSize="35dp"
+            android:tag="easy"
+            android:backgroundTint="@color/selected_background"
+            android:layout_marginRight="@dimen/margin_between_menu"
+            app:icon="@drawable/ic_easy_star"/>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/medium_button"
+            android:layout_width="75dp"
+            android:layout_height="75dp"
+            android:insetLeft="0dp"
+            android:insetTop="0dp"
+            android:insetRight="0dp"
+            android:insetBottom="0dp"
+            app:cornerRadius="50dp"
+            app:iconGravity="textStart"
+            app:iconPadding="0dp"
+            app:iconSize="35dp"
+            android:tag="medium"
+            android:backgroundTint="@color/black_background"
+            android:layout_marginLeft="@dimen/margin_between_menu"
+            android:layout_marginRight="@dimen/margin_between_menu"
+            app:icon="@drawable/ic_medium_star"/>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/hard_button"
+            android:layout_width="75dp"
+            android:layout_height="75dp"
+            android:insetLeft="0dp"
+            android:insetTop="0dp"
+            android:insetRight="0dp"
+            android:insetBottom="0dp"
+            app:cornerRadius="50dp"
+            app:iconGravity="textStart"
+            app:iconPadding="0dp"
+            app:iconSize="35dp"
+            android:tag="hard"
+            android:backgroundTint="@color/black_background"
+            android:layout_marginLeft="@dimen/margin_between_menu"
+            app:icon="@drawable/ic_hard_star"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/topic"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/topic_choosing"
-        android:textColor="@color/white"
-        android:fontFamily="@font/f20610"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="120dp"
-        android:background="@drawable/rounding_button"/>
+        android:orientation="horizontal"
+        android:layout_below="@+id/difficulty"
+        android:layout_marginTop="@dimen/margin_top"
+        android:layout_centerHorizontal="true">
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/football"
+            android:layout_width="75dp"
+            android:layout_height="75dp"
+            android:insetLeft="0dp"
+            android:insetTop="0dp"
+            android:insetRight="0dp"
+            android:insetBottom="0dp"
+            app:cornerRadius="50dp"
+            app:iconGravity="textStart"
+            app:iconPadding="0dp"
+            app:iconSize="35dp"
+            android:tag="football"
+            android:backgroundTint="@color/selected_background"
+            android:layout_marginRight="@dimen/margin_between_menu"
+            app:icon="@drawable/ic_sports_soccer"/>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/race"
+            android:layout_width="75dp"
+            android:layout_height="75dp"
+            android:insetLeft="0dp"
+            android:insetTop="0dp"
+            android:insetRight="0dp"
+            android:insetBottom="0dp"
+            app:cornerRadius="50dp"
+            app:iconGravity="textStart"
+            app:iconPadding="0dp"
+            app:iconSize="35dp"
+            android:tag="race"
+            android:backgroundTint="@color/black_background"
+            android:layout_marginLeft="@dimen/margin_between_menu"
+            android:layout_marginRight="@dimen/margin_between_menu"
+            app:icon="@drawable/ic_sports_motorsports"/>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/animals"
+            android:layout_width="75dp"
+            android:layout_height="75dp"
+            android:insetLeft="0dp"
+            android:insetTop="0dp"
+            android:insetRight="0dp"
+            android:insetBottom="0dp"
+            app:cornerRadius="50dp"
+            app:iconGravity="textStart"
+            app:iconPadding="0dp"
+            app:iconSize="35dp"
+            android:tag="animal"
+            android:backgroundTint="@color/black_background"
+            android:layout_marginLeft="@dimen/margin_between_menu"
+            app:icon="@drawable/ic_pets"/>
+    </LinearLayout>
 
     <com.google.android.gms.ads.AdView
         xmlns:ads="http://schemas.android.com/apk/res-auto"

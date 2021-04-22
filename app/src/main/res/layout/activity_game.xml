@@ -36,7 +36,7 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             android:layout_below="@+id/winner_image"
-            android:layout_marginTop="25dp"
+            android:layout_marginTop="@dimen/margin_top"
             android:layout_centerHorizontal="true">
 
             <com.google.android.material.button.MaterialButton
@@ -52,7 +52,7 @@
                 app:iconPadding="0dp"
                 app:iconSize="35dp"
                 android:backgroundTint="#5E54AC"
-                android:layout_marginRight="15dp"
+                android:layout_marginRight="@dimen/margin_between_game_results"
                 app:icon="@drawable/ic_baseline_replay_24"/>
 
             <com.google.android.material.button.MaterialButton
@@ -68,7 +68,7 @@
                 app:iconPadding="0dp"
                 app:iconSize="35dp"
                 android:backgroundTint="#453D81"
-                android:layout_marginLeft="15dp"
+                android:layout_marginLeft="@dimen/margin_between_game_results"
                 app:icon="@drawable/ic_baseline_menu_24"/>
         </LinearLayout>
     </RelativeLayout>

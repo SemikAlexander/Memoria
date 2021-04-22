@@ -6,10 +6,17 @@ import android.widget.AdapterView.OnItemClickListener
 import androidx.appcompat.app.AppCompatActivity
 import com.example.memoria.adapters.GridAdapter
 import com.example.memoria.databinding.ActivityGameBinding
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
 
 
 class GameActivity : AppCompatActivity() {
+
     lateinit var binding: ActivityGameBinding
+
+    private var size = -1
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -22,12 +29,20 @@ class GameActivity : AppCompatActivity() {
         super.onStart()
 
         binding.apply {
-            gameField.numColumns = 2
+            when (intent.getStringExtra("difficult")) {
+                "easy" -> size = 4
+                "medium" -> size = 6
+                "hard" -> size = 8
+            }
+
+            gameField.numColumns = size
             gameField.isEnabled = true
-            val gameFieldAdapter = GridAdapter(this@GameActivity, 2, 2, "football")
+            val gameFieldAdapter =
+                GridAdapter(this@GameActivity, size, size, "football")
 
             menuButton.setOnClickListener {
                 startActivity<MainActivity>()
+                finish()
             }
 
             replayButton.setOnClickListener {
@@ -40,6 +55,13 @@ class GameActivity : AppCompatActivity() {
             gameField.onItemClickListener = OnItemClickListener { _, _, position, _ ->
                 gameFieldAdapter.checkOpenCells()
                 gameFieldAdapter.openCell(position)
+
+                GlobalScope.launch {
+                    delay(1000)
+                    launch(Dispatchers.Main) {
+                        gameFieldAdapter.checkOpenCells()
+                    }
+                }
                 if (gameFieldAdapter.isGameOver()) {
                     gameField.visibility = View.GONE
                     gameResult.visibility = View.VISIBLE
@@ -47,4 +69,5 @@ class GameActivity : AppCompatActivity() {
             }
         }
     }
+
 }
