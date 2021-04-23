@@ -41,7 +41,6 @@ class GameActivity : AppCompatActivity() {
                 GridAdapter(this@GameActivity, size, size, "football")
 
             menuButton.setOnClickListener {
-                startActivity<MainActivity>()
                 finish()
             }
 

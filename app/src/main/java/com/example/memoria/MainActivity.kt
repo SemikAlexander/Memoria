@@ -29,7 +29,6 @@ class MainActivity : AppCompatActivity() {
                 startActivity<GameActivity> {
                     putExtra("difficult", level)
                 }
-                finish()
             }
 
             easyButton.setOnClickListener{
