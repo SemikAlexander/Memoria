@@ -35,10 +35,12 @@ class GameActivity : AppCompatActivity() {
                 "hard" -> size = 8
             }
 
+            val topicGame = intent.getStringExtra("topic").toString()
+
             gameField.numColumns = size
             gameField.isEnabled = true
             val gameFieldAdapter =
-                GridAdapter(this@GameActivity, size, size, "football")
+                GridAdapter(this@GameActivity, size, size, topicGame)
 
             menuButton.setOnClickListener {
                 finish()

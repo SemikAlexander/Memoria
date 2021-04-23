@@ -28,22 +28,34 @@ class MainActivity : AppCompatActivity() {
             startGame.setOnClickListener {
                 startActivity<GameActivity> {
                     putExtra("difficult", level)
+                    putExtra("topic", user_topic)
                 }
             }
 
             easyButton.setOnClickListener{
-                level = "easy"
+                level = easyButton.tag.toString()
 
                 easyButton.setBackgroundColor(
                     ContextCompat.getColor(this@MainActivity, R.color.selected_background))
                 mediumButton.setBackgroundColor(
                     ContextCompat.getColor(this@MainActivity, R.color.black_background))
                 hardButton.setBackgroundColor(
+                    ContextCompat.getColor(this@MainActivity, R.color.black_background))
+            }
+
+            football.setOnClickListener{
+                user_topic = football.tag.toString()
+
+                football.setBackgroundColor(
+                    ContextCompat.getColor(this@MainActivity, R.color.selected_background))
+                race.setBackgroundColor(
+                    ContextCompat.getColor(this@MainActivity, R.color.black_background))
+                animals.setBackgroundColor(
                     ContextCompat.getColor(this@MainActivity, R.color.black_background))
             }
 
             mediumButton.setOnClickListener{
-                level = "medium"
+                level = mediumButton.tag.toString()
 
                 easyButton.setBackgroundColor(
                     ContextCompat.getColor(this@MainActivity, R.color.black_background))
@@ -54,14 +66,36 @@ class MainActivity : AppCompatActivity() {
 
             }
 
+            race.setOnClickListener{
+                user_topic = race.tag.toString()
+
+                football.setBackgroundColor(
+                    ContextCompat.getColor(this@MainActivity, R.color.black_background))
+                race.setBackgroundColor(
+                    ContextCompat.getColor(this@MainActivity, R.color.selected_background))
+                animals.setBackgroundColor(
+                    ContextCompat.getColor(this@MainActivity, R.color.black_background))
+            }
+
             hardButton.setOnClickListener{
-                level = "hard"
+                level = hardButton.tag.toString()
 
                 easyButton.setBackgroundColor(
                     ContextCompat.getColor(this@MainActivity, R.color.black_background))
                 mediumButton.setBackgroundColor(
                     ContextCompat.getColor(this@MainActivity, R.color.black_background))
                 hardButton.setBackgroundColor(
+                    ContextCompat.getColor(this@MainActivity, R.color.selected_background))
+            }
+
+            animals.setOnClickListener{
+                user_topic = animals.tag.toString()
+
+                football.setBackgroundColor(
+                    ContextCompat.getColor(this@MainActivity, R.color.black_background))
+                race.setBackgroundColor(
+                    ContextCompat.getColor(this@MainActivity, R.color.black_background))
+                animals.setBackgroundColor(
                     ContextCompat.getColor(this@MainActivity, R.color.selected_background))
             }
 
